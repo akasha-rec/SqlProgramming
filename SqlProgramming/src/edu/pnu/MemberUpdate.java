@@ -1,5 +1,5 @@
 package edu.pnu;//업데이트 쿼리는 완성했는데 입력 데이터가 null일 때 수정에서 제외하는 조건을 만족하는 코드는 못했다. 그래도 발전은 있었네...
-
+//입력하지 않은 데이터 제외하고 다른 데이터들은 업데이트 되는 게 맞다
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
