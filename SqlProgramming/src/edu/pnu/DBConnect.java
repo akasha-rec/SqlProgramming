@@ -1,4 +1,4 @@
-package edu.pnu;
+package edu.pnu;//servlet 때 참고
 
 import java.sql.Connection;
 import java.sql.DriverManager;
