@@ -29,4 +29,8 @@
   	<param-name>MySQLPwd</param-name>
   	<param-value>tiger</param-value>
   </context-param>
+  <session-config>
+  <!-- 세션 유지 시간 설정 20분 : 자동 로그아웃-->
+  	<session-timeout>20</session-timeout>
+  </session-config>
 </web-app>
