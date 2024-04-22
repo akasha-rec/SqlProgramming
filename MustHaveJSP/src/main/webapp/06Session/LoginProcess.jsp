@@ -21,8 +21,9 @@ dao.close();
 //로그인 성공 여부에 따른 처리
 if (memberDTO.getId() != null) {
 	//로그인 성공
-	session.setAttribute("UserId", memberDTO.getId());
+ 	session.setAttribute("UserId", memberDTO.getId());
 	session.setAttribute("UserName", memberDTO.getName());
+// 	session.setAttribute("user", memberDTO); //할 수도 있다.
 	response.sendRedirect("LoginForm.jsp");
 }
 else {
