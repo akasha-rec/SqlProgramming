@@ -150,7 +150,7 @@ public class BoardDAO extends JDBConnect {
 		
 		String query = "SELECT * FROM board";
 		if (map.get("searchWord") != null) {
-			query += "WHERE " + map.get("searchField") + " "
+			query += " WHERE " + map.get("searchField") + " "
 					+ " LIKE '%" + map.get("searchWord") + "%' ";
 		}
 		query += " ORDER BY num DESC";
