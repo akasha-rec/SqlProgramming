@@ -9,7 +9,7 @@ import jakarta.servlet.ServletContext;
 
 public class BoardDAO extends JDBConnect {
 	public BoardDAO(ServletContext application) {
-		super(application);
+		super(application); //application 내장 객체를 통해 web.xml에 정의해둔 정보를 가져와 DB 연결
 	}
 	
 	public int insertWrite(BoardDTO dto) {
