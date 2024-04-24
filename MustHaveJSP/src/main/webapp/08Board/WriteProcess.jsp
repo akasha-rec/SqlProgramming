@@ -12,6 +12,8 @@ String content = request.getParameter("content");
 BoardDTO dto = new BoardDTO();
 dto.setTitle(title);
 dto.setContent(content);
+//session 영역에 저장돼있는 사용자 아이디까지 담는 이유는 board 테이블의 id가 member 테이블의 id를 참조하고 있기 때문에
+//id가 빈 값이면 insert 시 제약조건에 위배
 dto.setId(session.getAttribute("UserId").toString());
 
 //DAO 객체를 통해 DB에 DTO 저장

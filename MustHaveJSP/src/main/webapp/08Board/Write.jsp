@@ -25,7 +25,7 @@ function validateForm(form) {
 <jsp:include page="../Common/Link.jsp" />
 <h2>회원제 게시판 - 글쓰기(Write)</h2>
 <form name="writeFrm" method="post" action="WriteProcess.jsp"
-	onsubmit="return validateForm(this);">
+	onsubmit="return validateForm(this);"> <!-- 제목과 내용이 없다면 false 반환되면서 폼 제출X : 위의 validateForm 호출 -->
 	<table border="1" width="90%">
 		<tr>
 			<td>제목</td>

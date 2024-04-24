@@ -22,8 +22,8 @@ if (searchWord != null) {
 int totalCount = dao.selectCount(param); //게시물 수 확인
 /* 페이지 처리 start */
 // 전체 페이지 수 계산
-int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
-int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE")); //한 페이지에 출력할 게시물의 개수
+int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK")); //한 화면에 출력할 페이지 번호의 개수
 int totalPage = (int)Math.ceil((double)totalCount / pageSize);
 
 // 현재 페이지 확인
@@ -59,7 +59,7 @@ dao.close();//DB 연결 닫기
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 			</select>
-			<input type="text" name="searchWord" />
+			<input type="text" name="searchWord" value="<%= searchWord %>"/>
 			<input type="submit" value="검색하기" />
 		</td>
 	</tr>
@@ -113,7 +113,7 @@ else {
 		<tr align="center">
 			<!-- 페이징 처리 -->
 			<td>
-				<%= BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %>
+				<%= BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI(), searchField, searchWord) %>
 			</td>
 			<!-- 글쓰기 버튼 -->
 			<td><button type="button" onclick="location.href='Write.jsp';">글쓰기</button></td>
