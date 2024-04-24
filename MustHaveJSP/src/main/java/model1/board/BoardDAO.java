@@ -180,4 +180,46 @@ public class BoardDAO extends JDBConnect {
 		
 		return bbs;
 	}
+	
+	//검색 조건에 맞는 게시물 목록 반환(페이징 기능 지원)
+	public List<BoardDTO> selectListPage(Map<String, Object> map) {
+		List<BoardDTO> bbs = new Vector<BoardDTO>(); //게시물 목록을 담을 변수
+		
+		String query = "SELECT * FROM board";
+		if (map.get("searchWord") != null) {
+			query += " WHERE " + map.get("searchField") + " "
+					+ " LIKE '%" + map.get("searchWord") + "%' ";
+		}
+		query += "		ORDER BY num DESC limit ?,?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setInt(1, (int)map.get("start"));
+			psmt.setInt(2, (int)map.get("pageSize"));
+			
+			
+			rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				BoardDTO dto = new BoardDTO();
+				
+				dto.setNum(rs.getString("num"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setPostdate(rs.getDate("postdate"));
+				dto.setId(rs.getString("id"));
+				dto.setVisitcount(rs.getString("visitcount"));
+				
+				bbs.add(dto); //결과 목록에 저장
+			}
+		}
+		catch (Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+		
+		return bbs;
+	}
+	
 }
