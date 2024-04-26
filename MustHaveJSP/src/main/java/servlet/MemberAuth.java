@@ -4,12 +4,17 @@ import java.io.IOException;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebInitParam;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import membership.MemberDAO;
 import membership.MemberDTO;
 
+//WEB-XML에 쓰지 않고 하는 방법
+@WebServlet(urlPatterns = "/12Servlet/MemberAuth.mvc",
+			initParams = { @WebInitParam(name="admin_id", value="nakja")})
 public class MemberAuth extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	MemberDAO dao;
