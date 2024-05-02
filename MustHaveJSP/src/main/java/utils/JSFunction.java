@@ -39,7 +39,7 @@ public class JSFunction {
 			String script = ""
 					+ "<script>"
 					+ "    alert('" + msg + "');"
-					+ "    history.back();"
+					+ "    location.href='" + url + "';"
 					+ "</script>";
 			writer.print(script);
 		}
